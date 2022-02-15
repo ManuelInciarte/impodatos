@@ -7,9 +7,13 @@ import { ComponentsModule } from './components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { userSession } from './shared/guard/userSession.guard';
+import { SharedModule } from './shared/shared.module';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -17,6 +21,8 @@ import { userSession } from './shared/guard/userSession.guard';
     ComponentsModule,
     FormsModule, 
     HttpClientModule, 
+    SharedModule,  
+
   ],
   providers: [
     CookieService,
