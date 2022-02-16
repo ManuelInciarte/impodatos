@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         if (response.token){
           this._loginService.setToken(response.token);
           this.loading=false
-          this._router.navigateByUrl('uploader');
+          this._router.navigateByUrl('dashboard');
         }
         else{
           this.loading=false

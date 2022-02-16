@@ -7,7 +7,8 @@ import { userSession } from './shared/guard/userSession.guard';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch:'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'uploader', component: UploaderComponent, canActivate : [userSession]},
+  {path: 'dashboard', loadChildren: ()  => import('./components/dashboard/dashboard.module').then(x => x.DashboardModule), canActivate : [userSession]},
+  //{path: 'uploader', component: UploaderComponent, canActivate : [userSession]},
   {path: '**', redirectTo: 'login', pathMatch:'full'},
 ];
 

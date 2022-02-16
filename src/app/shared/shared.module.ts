@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './Components/layout/layout.component';
 //material
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -8,9 +7,19 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
+
+
+
+
+
 @NgModule({
-  declarations: [
-    LayoutComponent
+  declarations: [    
+    NavBarComponent
   ],
   imports: [
     CommonModule,
@@ -20,15 +29,27 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSelectModule,
+    MatCardModule,
+    
+    
   ],
   exports:[
-    LayoutComponent,    
+        
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    NavBarComponent,
+    MatToolbarModule,
+    MatIconModule,
+    MatSelectModule,
+    MatCardModule,
+    
   ]
 })
 export class SharedModule { }

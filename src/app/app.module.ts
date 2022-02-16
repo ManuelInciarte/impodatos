@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { userSession } from './shared/guard/userSession.guard';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { SharedModule } from './shared/shared.module';
     FormsModule, 
     HttpClientModule, 
     SharedModule,  
+    BrowserAnimationsModule,
 
   ],
   providers: [
