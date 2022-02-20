@@ -1,13 +1,14 @@
 <div class="body">
-    <div class="login">
-        <form>
+    <div class="card">
+        <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+        <form [formGroup]="form" *ngIf="!loading">
             <mat-card class="option-card">
                 <table>
                     <tr>
                         <td>
                             <mat-form-field appearance="fill">
                                 <mat-label>Seleccione un programa</mat-label>
-                                <mat-select>
+                                <mat-select formControlName="program" >
                                   <mat-option *ngFor="let opt of selectProgramsOptions" [value]="opt.id">
                                     {{opt.displayName}}
                                   </mat-option>
@@ -15,23 +16,19 @@
                               </mat-form-field>
                         </td>
                         <td>
-                            <input class="btn" (change)="onFileSelected()" #fileInput type="file" id="file">
+                            <input class="btn" (change)="onFileSelected($event)"  formControlName="attachment" #fileInput type="file" id="file">
                  
                             <!--<button type="button" mat-raised-button (click)="fileInput.click()">Seleccionar Archivo</button>
                             <input hidden (change)="onFileSelected()" #fileInput type="file" id="file">-->
                         </td>
                     </tr>
-                </table>
-              
+                </table>              
                 
                   <br>
-                  <button mat-raised-button color="primary" class="loginElement button" type="submit" >Procesar</button>
+                  <button mat-raised-button color="primary" class="loginElement button" type="submit" (click)="onUpload()" [disabled]="form.invalid" >Procesar</button>
             
             </mat-card>
-
              </form>
-
     </div>
 </div>
-
 

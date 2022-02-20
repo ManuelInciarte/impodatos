@@ -7,19 +7,19 @@ import {MatButtonModule} from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { NavBarComponent } from './Components/nav-bar/nav-bar.component';
+
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 
 
 @NgModule({
   declarations: [    
-    NavBarComponent
+
   ],
   imports: [
     CommonModule,
@@ -33,6 +33,7 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    MatTableModule,
     
     
   ],
@@ -43,12 +44,12 @@ import {MatCardModule} from '@angular/material/card';
     MatButtonModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule,
-    NavBarComponent,
+    MatProgressSpinnerModule,    
     MatToolbarModule,
     MatIconModule,
     MatSelectModule,
     MatCardModule,
+    MatTableModule,
     
   ]
 })

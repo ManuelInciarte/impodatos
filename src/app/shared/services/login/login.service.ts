@@ -13,7 +13,8 @@ export class LoginService {
   constructor(private _http : HttpClient,private _cookieService: CookieService, private _router: Router) { }
 
   login(user: any): Observable<any> {
-    return this._http.post(Connection.ENDPOINT, user);
+    var response =  this._http.post(Connection.ENDPOINT, user);
+    return response; 
   }
 
   setToken(token: string){
