@@ -12,7 +12,11 @@ export class LoginService {
 
   constructor(private _http : HttpClient,private _cookieService: CookieService, private _router: Router) { }
 
+  loginInterno() : Observable<any[]>{
+    return this._http.get<any[]>('./assets/data/usuarios.json');
+  }
   login(user: any): Observable<any> {
+   
     var response =  this._http.post(Connection.ENDPOINT, user);
     return response; 
   }

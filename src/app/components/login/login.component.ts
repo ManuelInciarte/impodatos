@@ -31,9 +31,9 @@ export class LoginComponent implements OnInit {
       password: this.form.value.password
       };
       this.loading=true
-      this._loginService.login(usuario).subscribe(response =>{
-        if (response.token){
-          this._loginService.setToken(response.token);
+      this._loginService.loginInterno().subscribe(response =>{
+        if (usuario.email){
+          this._loginService.setToken(usuario.email);
           this.loading=false
           this._router.navigateByUrl('dashboard');
         }
@@ -42,6 +42,9 @@ export class LoginComponent implements OnInit {
           this.alertMsj("Usuario O contraseña Incorrecto");
         }
 
+      }, error=>{
+        this.loading=false
+        this.alertMsj("Ocurrio Un error de conexion");
       });
   }
 

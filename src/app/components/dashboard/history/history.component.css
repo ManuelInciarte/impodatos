@@ -3,3 +3,7 @@ table {
     margin-top: 3%;
     width: 80%;
   }
+
+  th{
+      width: 20%;
+  }
