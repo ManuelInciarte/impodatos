@@ -1,9 +1,15 @@
 table {
-    margin-left: 10%;
-    margin-top: 3%;
-    width: 80%;
+
+    width: 100%;
   }
 
   th{
       width: 20%;
+  }
+  .container{
+      margin: 3%;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
   }
