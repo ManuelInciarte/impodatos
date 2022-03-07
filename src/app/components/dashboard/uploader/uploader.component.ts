@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { matFormFieldAnimations } from '@angular/material/form-field';
-import { selectPrograms } from 'src/app/shared/Models/selectPrograms';
+import { Programs, selectPrograms } from 'src/app/shared/models/selectPrograms';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import { UploaderService } from 'src/app/shared/services/uploader/uploader.service';
 import swal from'sweetalert2';
@@ -11,7 +11,7 @@ import swal from'sweetalert2';
   styleUrls: ['./uploader.component.css']
 })
 export class UploaderComponent implements OnInit {
-  selectProgramsOptions: selectPrograms[] = [];
+  selectProgramsOptions!: Programs;
   form: FormGroup;
   uploadFile!: Array<File>
   file!: File; 
@@ -30,7 +30,8 @@ export class UploaderComponent implements OnInit {
 
 
   loadSelectPrograms(){
-    this._uploaderService.getSelectProgram().subscribe(data =>{
+    this._uploaderService.getSelectProgram2().subscribe(data =>{
+      let [{programid, programname}] = data.programs;
       this.selectProgramsOptions = data;
     })
   }

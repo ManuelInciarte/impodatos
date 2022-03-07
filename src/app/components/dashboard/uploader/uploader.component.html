@@ -9,8 +9,8 @@
                             <mat-form-field appearance="fill">
                                 <mat-label>Seleccione un programa</mat-label>
                                 <mat-select formControlName="program" >
-                                  <mat-option *ngFor="let opt of selectProgramsOptions" [value]="opt.id">
-                                    {{opt.displayName}}
+                                  <mat-option *ngFor="let opt of selectProgramsOptions" [value]="opt.programs[0].programid">
+                                    {{opt.programs[0].programid}}
                                   </mat-option>
                                 </mat-select>
                               </mat-form-field>
