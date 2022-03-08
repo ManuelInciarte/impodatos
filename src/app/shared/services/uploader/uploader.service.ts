@@ -12,10 +12,7 @@ export class UploaderService {
 
   constructor(private _http : HttpClient) { }
 
-  getSelectProgram() : Observable<selectPrograms[]>{
-    return this._http.get<selectPrograms[]>('./assets/data/programs.json');
-  }
-  getSelectProgram2() : Observable<Programs>{
+  getSelectProgram() : Observable<Programs>{
     return this._http.get<Programs>(Connection.ENDPOINTBACK + 'DhisIntegration/getAllProgram');
   }
 
