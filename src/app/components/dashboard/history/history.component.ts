@@ -22,7 +22,7 @@ export interface PeriodicElement {
 export class HistoryComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['idRegistro', 'programId', 'usuario', 'estado', 'fecha'];
+  displayedColumns: string[] = ['idRegistro', 'programId', 'usuario', 'estado', 'fecha', 'acciones'];
   historyData! :  History[];
   dataSource = new MatTableDataSource(this.historyData);
   constructor(private _uploaderService : UploaderService, private _login : LoginService) { }
@@ -57,6 +57,18 @@ export class HistoryComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  descargar(i: number){
+    console.log("sedescargo " + this.historyData[i].file);
+    this.downloadFile(this.historyData[i].file, this.historyData[i].programsid)
+  }
   
+  downloadFile(base64String :any, fileName: string) {
+    const source = `data:application/octet-stream;base64,${base64String}`;
+    const link = document.createElement("a");
+    link.href = source;
+    link.download = `${fileName}.csv`
+    link.click();
+  }
+ 
 
 }
