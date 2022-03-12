@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Programs, selectPrograms } from '../../models/selectPrograms';
+import { Programs, selectPrograms } from '../../Models/selectPrograms'; 
 import { Connection } from '../connection';
 import {History } from '../../Models/history'
 

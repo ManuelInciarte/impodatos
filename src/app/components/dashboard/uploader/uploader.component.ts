@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { matFormFieldAnimations } from '@angular/material/form-field';
-import { Programs, selectPrograms,Program } from 'src/app/shared/models/selectPrograms';
+import { Programs, selectPrograms,Program } from 'src/app/shared/Models/selectPrograms';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import { UploaderService } from 'src/app/shared/services/uploader/uploader.service';
 import swal from'sweetalert2';
