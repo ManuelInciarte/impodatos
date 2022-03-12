@@ -1,3 +1,5 @@
+import { Byte } from "@angular/compiler/src/util";
+
 export interface History{
   id: number;
   programsid: string;
@@ -6,5 +8,6 @@ export interface History{
   state: boolean;
   userLogin: string;
   fecha: string;
+  file: Byte[];
     
 }
