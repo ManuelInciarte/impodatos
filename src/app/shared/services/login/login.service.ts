@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Connection } from '../connection';
 import { CookieService } from "ngx-cookie-service";
 import { Router } from '@angular/router';
+import { login } from '../../models/login';
+import { LoginResponse } from '../../models/LoginResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +18,9 @@ export class LoginService {
     this._cookieService.deleteAll();
     return this._http.get<any[]>('./assets/data/usuarios.json');
   }
-  login(user: any): Observable<any> {
+  login(user: login): Observable<LoginResponse> {
     this._cookieService.deleteAll();
-    var response =  this._http.post(Connection.ENDPOINT, user);
+    var response =  this._http.post<LoginResponse>(Connection.ENDPOINTBACK + 'Login/getUser', user);
     return response; 
   }
 

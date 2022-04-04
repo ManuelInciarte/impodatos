@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { matFormFieldAnimations } from '@angular/material/form-field';
-import { Programs, selectPrograms,Program } from 'src/app/shared/Models/selectPrograms';
+import { Programs, selectPrograms,Program } from 'src/app/shared/models/selectPrograms';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import { UploaderService } from 'src/app/shared/services/uploader/uploader.service';
 import swal from'sweetalert2';
@@ -44,6 +44,7 @@ export class UploaderComponent implements OnInit {
     formData.append('Programsid', this.form.value.program);
     formData.append( 'UserLogin', usuario );
     formData.append( 'ExcelFile', file, file.name);
+    formData.append( 'token', this._login.getToken() )
     this._uploaderService.uploadFile(formData).subscribe(result =>{
       
       let mensaje = '';

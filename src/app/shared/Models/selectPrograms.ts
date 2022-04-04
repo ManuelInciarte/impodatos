@@ -13,10 +13,23 @@ export interface Program {
     programid:        string;
     programname:      string;
     attributemapping: Attributemapping[];
+    programStages:        ProgramStage[];
 }
 
 export interface Attributemapping {
     id:     string;
     name:   string;
     column: string;
+}
+export interface ProgramStage {
+    id:                       string;
+    name:                     string;
+    programStageDataElements: ProgramStageDataElement[];
+}
+export interface ProgramStageDataElement {
+    dataElement: DataElement;
+}
+
+export interface DataElement {
+    id: string;
 }

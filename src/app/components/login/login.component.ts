@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { login } from 'src/app/shared/models/login';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 
 @Component({
@@ -26,14 +27,14 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar(){
-    let usuario ={
-      email: this.form.value.user,
+    let usuario : login ={
+      username: this.form.value.user,
       password: this.form.value.password
       };
       this.loading=true
-      this._loginService.loginInterno().subscribe(response =>{
-        if (usuario.email){
-          this._loginService.setToken(usuario.email);
+      this._loginService.login(usuario).subscribe(response =>{
+        if (response.access_token){
+          this._loginService.setToken(response.access_token);
           this.loading=false
           this._router.navigateByUrl('dashboard');
         }
