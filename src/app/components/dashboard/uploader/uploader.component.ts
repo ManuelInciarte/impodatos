@@ -12,10 +12,12 @@ import swal from'sweetalert2';
 })
 export class UploaderComponent implements OnInit {
   selectProgramsOptions!: Program[];
+  programSeleccionado!: Program;
   form: FormGroup;
   uploadFile!: Array<File>
   file!: File; 
   loading=false;
+ 
 
   constructor(private _uploaderService : UploaderService, private fb: FormBuilder, private _login : LoginService) {
     this.form = this.fb.group({
@@ -34,6 +36,17 @@ export class UploaderComponent implements OnInit {
       let {programs} = data;
       this.selectProgramsOptions = programs;
     })
+  }
+
+  changeSelect(){
+    let id = this.form.value.program;
+    var obj = this.selectProgramsOptions.find(function(result){
+        return result.programStages.find(function (response){
+          return response.id == id;
+        });
+      }); 
+      
+      console.log(obj);
   }
   
   onUpload(){
