@@ -8,10 +8,12 @@
                         <td>
                             <mat-form-field appearance="fill">
                                 <mat-label>Seleccione un programa</mat-label>
-                                <mat-select formControlName="program" >
-                                  <mat-option *ngFor="let opt of selectProgramsOptions" [value]="opt.programid">
-                                    {{opt.programname}}
+                                <mat-select formControlName="program" (selectionChange)="changeSelect()">
+                                    <mat-optgroup *ngFor="let group of selectProgramsOptions" [label]="group.programname">
+                                  <mat-option *ngFor="let opt of group.programStages" [value]="opt.id" >
+                                    {{opt.name}}
                                   </mat-option>
+                                    </mat-optgroup>
                                 </mat-select>
                               </mat-form-field>
                         </td>

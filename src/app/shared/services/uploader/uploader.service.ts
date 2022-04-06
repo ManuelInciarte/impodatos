@@ -1,19 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Programs, selectPrograms } from '../../Models/selectPrograms'; 
+import { Programs, selectPrograms } from '../../models/selectPrograms'; 
 import { Connection } from '../connection';
-import {History } from '../../Models/history'
+import {History } from '../../models/history'
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploaderService {
 
-  constructor(private _http : HttpClient) { }
+  constructor(private _http : HttpClient, private _loginService : LoginService) { }
 
   getSelectProgram() : Observable<Programs>{
-    return this._http.get<Programs>(Connection.ENDPOINTBACK + 'DhisIntegration/getAllProgram');
+    let token = this._loginService.getToken();
+    return this._http.get<Programs>(Connection.ENDPOINTBACK + 'DhisIntegration/getAllProgram/' + token);
   }
 
 

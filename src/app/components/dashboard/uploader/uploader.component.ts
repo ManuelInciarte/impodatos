@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { matFormFieldAnimations } from '@angular/material/form-field';
-import { Programs, selectPrograms,Program } from 'src/app/shared/Models/selectPrograms';
+import { Programs, selectPrograms,Program } from 'src/app/shared/models/selectPrograms';
 import { LoginService } from 'src/app/shared/services/login/login.service';
 import { UploaderService } from 'src/app/shared/services/uploader/uploader.service';
 import swal from'sweetalert2';
@@ -12,10 +12,12 @@ import swal from'sweetalert2';
 })
 export class UploaderComponent implements OnInit {
   selectProgramsOptions!: Program[];
+  programSeleccionado!: Program;
   form: FormGroup;
   uploadFile!: Array<File>
   file!: File; 
   loading=false;
+ 
 
   constructor(private _uploaderService : UploaderService, private fb: FormBuilder, private _login : LoginService) {
     this.form = this.fb.group({
@@ -35,6 +37,17 @@ export class UploaderComponent implements OnInit {
       this.selectProgramsOptions = programs;
     })
   }
+
+  changeSelect(){
+    let id = this.form.value.program;
+    var obj = this.selectProgramsOptions.find(function(result){
+        return result.programStages.find(function (response){
+          return response.id == id;
+        });
+      }); 
+      
+      console.log(obj);
+  }
   
   onUpload(){
     this.loading=true;
@@ -44,6 +57,7 @@ export class UploaderComponent implements OnInit {
     formData.append('Programsid', this.form.value.program);
     formData.append( 'UserLogin', usuario );
     formData.append( 'ExcelFile', file, file.name);
+    formData.append( 'token', this._login.getToken() )
     this._uploaderService.uploadFile(formData).subscribe(result =>{
       
       let mensaje = '';
