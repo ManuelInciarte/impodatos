@@ -24,12 +24,16 @@ export class LoginService {
     return response; 
   }
 
-  setToken(token: string){
+  setToken(token: string, user: string){
     this._cookieService.set("token", token);
+    this._cookieService.set("usuario", user);
   }
 
   getToken(){
     return this._cookieService.get("token");
+  }
+  getUsuario(){
+    return this._cookieService.get("usuario");
   }
   logout(){
     this._cookieService.deleteAll();

@@ -12,7 +12,7 @@ import swal from'sweetalert2';
 })
 export class UploaderComponent implements OnInit {
   selectProgramsOptions!: Program[];
-  programSeleccionado!: Program;
+  programIdSeleccionado: any;
   form: FormGroup;
   uploadFile!: Array<File>
   file!: File; 
@@ -45,17 +45,16 @@ export class UploaderComponent implements OnInit {
           return response.id == id;
         });
       }); 
-      
-      console.log(obj);
+      this.programIdSeleccionado = obj?.programid;
   }
   
   onUpload(){
-    this.loading=true;
-    const usuario= this._login.getToken();  
+    this.loading=true;  
     const file: File = this.uploadFile[0];
     let formData = new FormData();
-    formData.append('Programsid', this.form.value.program);
-    formData.append( 'UserLogin', usuario );
+    formData.append('Programsid',this.programIdSeleccionado);
+    formData.append('IdprogramStages', this.form.value.program);
+    formData.append( 'UserLogin', this._login.getUsuario());
     formData.append( 'ExcelFile', file, file.name);
     formData.append( 'token', this._login.getToken() )
     this._uploaderService.uploadFile(formData).subscribe(result =>{

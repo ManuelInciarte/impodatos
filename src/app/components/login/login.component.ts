@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.loading=true
       this._loginService.login(usuario).subscribe(response =>{
         if (response.access_token){
-          this._loginService.setToken(response.access_token);
+          this._loginService.setToken(response.access_token, usuario.username);          
           this.loading=false
           this._router.navigateByUrl('dashboard');
         }
